@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mothi Gowtham | Data Science & Analytics</title>
+  <meta name="description" content="Portfolio of Mothi Gowtham Ashok Kumar — Data Science & Analytics, AI/ML, analytics engineering, visualization, and applied machine learning." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0d1b2a;
+      --panel: rgba(14, 27, 42, 0.82);
+      --panel-border: rgba(148, 163, 184, 0.18);
+      --text: #e5eef8;
+      --muted: #9db1c7;
+      --brand: #4fd1c5;
+      --brand-2: #7c9cff;
+      --accent: #9ae6b4;
+      --shadow: 0 18px 60px rgba(0,0,0,0.28);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(79, 209, 197, 0.12), transparent 28%),
+        radial-gradient(circle at top right, rgba(124, 156, 255, 0.14), transparent 24%),
+        linear-gradient(180deg, #040a13, #07111f 26%, #0a1727 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(4, 10, 19, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-badge {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #04101b;
+      font-weight: 800;
+      box-shadow: var(--shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active { color: white; }
+
+    .hero {
+      padding: 5.5rem 0 3.5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(79, 209, 197, 0.12);
+      border: 1px solid rgba(79, 209, 197, 0.18);
+      color: #c9fff9;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      line-height: 1.02;
+      margin: 0 0 1rem;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      color: var(--muted);
+      max-width: 65ch;
+      margin: 0 0 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 0.95rem 1.35rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: #06111e;
+      background: linear-gradient(135deg, var(--brand), var(--accent));
+      box-shadow: 0 14px 38px rgba(79, 209, 197, 0.22);
+    }
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .hero-card,
+    .card,
+    .skill-card,
+    .project-card,
+    .timeline-item,
+    .contact-card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card {
+      padding: 1.4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -40px -50px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(79,209,197,0.22), transparent 70%);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .metric {
+      padding: 1rem;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: 0.25rem;
+      color: white;
+    }
+
+    section { padding: 1.25rem 0 2.3rem; }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: end;
+      margin-bottom: 1.3rem;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      letter-spacing: -0.03em;
+    }
+
+    .section-head p {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      max-width: 56ch;
+    }
+
+    .about-grid,
+    .skills-grid,
+    .projects-grid,
+    .contact-grid {
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .about-grid { grid-template-columns: 1.25fr 0.75fr; }
+    .skills-grid { grid-template-columns: repeat(3, 1fr); }
+    .projects-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr 1fr 1fr; }
+
+    .card, .skill-card, .project-card, .contact-card { padding: 1.35rem; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 1rem; }
+    .tag {
+      font-size: 0.85rem;
+      padding: 0.45rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(124,156,255,0.12);
+      border: 1px solid rgba(124,156,255,0.2);
+      color: #d7e0ff;
+    }
+
+    .skill-card h3,
+    .project-card h3,
+    .contact-card h3,
+    .timeline-item h3 { margin-top: 0; margin-bottom: 0.4rem; }
+
+    .muted { color: var(--muted); }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      padding: 1.35rem;
+      position: relative;
+    }
+
+    .timeline-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+
+    ul.clean {
+      padding-left: 1.1rem;
+      margin: 0.8rem 0 0;
+      color: var(--muted);
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+      margin-top: auto;
+      padding-top: 0.35rem;
+    }
+
+    .project-links a {
+      color: #d9fffa;
+      font-weight: 600;
+      font-size: 0.94rem;
+    }
+
+    .pill {
+      font-size: 0.78rem;
+      padding: 0.35rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(154, 230, 180, 0.12);
+      color: #dbffe6;
+      border: 1px solid rgba(154, 230, 180, 0.2);
+      white-space: nowrap;
+    }
+
+    footer {
+      padding: 2rem 0 3rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .about-grid,
+      .skills-grid,
+      .projects-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head { align-items: start; flex-direction: column; }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links { display: none; }
+      .hero { padding-top: 4.2rem; }
+      .metrics { grid-template-columns: 1fr; }
+      .container { width: min(var(--max), calc(100% - 1.15rem)); }
+      .card, .skill-card, .project-card, .contact-card, .timeline-item, .hero-card { padding: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <a class="brand" href="#home">
+          <span class="brand-badge">MG</span>
+          <span>Mothi Gowtham</span>
+        </a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Data Science • Analytics • AI/ML</div>
+          <h1>Turning data into decisions, products, and measurable impact.</h1>
+          <p>
+            I’m <strong>Mothi Gowtham Ashok Kumar</strong>, a data science and analytics professional focused on machine learning,
+            business analytics, forecasting, experimentation, and visual storytelling. My work spans applied AI, predictive modeling,
+            analytics engineering, and dashboarding across business and research contexts.
+          </p>
+          <p>
+            I currently position my portfolio around <strong>data science, analytics, AI/ML, and visualization</strong>, with public work across GitHub,
+            Tableau, and LinkedIn.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">View Projects</a>
+            <a class="btn btn-secondary" href="https://github.com/Mothigowtham" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/mothigowtham" target="_blank" rel="noreferrer">LinkedIn</a>
+            <a class="btn btn-secondary" href="https://public.tableau.com/app/profile/mothigowtham" target="_blank" rel="noreferrer">Tableau</a>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <h3 style="margin-top:0">Profile Snapshot</h3>
+          <p class="muted" style="margin-top:0.25rem;">Public profile details and work highlights.</p>
+          <div class="tags">
+            <span class="tag">Amazon</span>
+            <span class="tag">Indiana University Indianapolis</span>
+            <span class="tag">Python</span>
+            <span class="tag">R</span>
+            <span class="tag">TensorFlow</span>
+            <span class="tag">Tableau</span>
+            <span class="tag">GCP</span>
+            <span class="tag">Machine Learning</span>
+          </div>
+          <div class="metrics">
+            <div class="metric">
+              <strong>19</strong>
+              <span class="muted">Public repositories</span>
+            </div>
+            <div class="metric">
+              <strong>2K+</strong>
+              <span class="muted">LinkedIn followers</span>
+            </div>
+            <div class="metric">
+              <strong>500+</strong>
+              <span class="muted">LinkedIn connections</span>
+            </div>
+            <div class="metric">
+              <strong>AI/ML</strong>
+              <span class="muted">Core focus area</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>About</h2>
+            <p>A cleaner, more professional positioning than the original template, rewritten around your actual public profile.</p>
+          </div>
+        </div>
+
+        <div class="about-grid">
+          <article class="card">
+            <h3>What I do</h3>
+            <p class="muted">
+              I work at the intersection of analytics, data science, and AI. My projects show a mix of predictive modeling,
+              deep learning, data mining, time-series forecasting, recommendation systems, unsupervised learning, and dashboard-driven storytelling.
+            </p>
+            <p class="muted">
+              I enjoy building solutions that are both technically rigorous and business-relevant — from sign language recognition models and financial forecasting,
+              to customer segmentation, market basket analysis, and interactive Tableau dashboards.
+            </p>
+          </article>
+
+          <aside class="card">
+            <h3>Focus Areas</h3>
+            <div class="tags">
+              <span class="tag">Predictive Modeling</span>
+              <span class="tag">Deep Learning</span>
+              <span class="tag">Forecasting</span>
+              <span class="tag">Recommendation Systems</span>
+              <span class="tag">Data Visualization</span>
+              <span class="tag">Business Analytics</span>
+              <span class="tag">Data Engineering</span>
+              <span class="tag">Research Analytics</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Skills</h2>
+            <p>Based on your public GitHub and Tableau profile descriptions.</p>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card">
+            <h3>Languages</h3>
+            <p class="muted">Python, R, SQL, plus notebook-driven analysis and scripting.</p>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">R</span>
+              <span class="tag">SQL</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>ML & AI</h3>
+            <p class="muted">TensorFlow, PyTorch, scikit-learn, predictive modeling, deep learning, and computer vision.</p>
+            <div class="tags">
+              <span class="tag">TensorFlow</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">scikit-learn</span>
+              <span class="tag">OpenCV</span>
+            </div>
+          </div>
+          <div class="skill-card">
+            <h3>Data Stack</h3>
+            <p class="muted">Pandas, Hadoop, Linux, MongoDB, MySQL, PostgreSQL, Oracle, MariaDB, MSSQL, and GCP.</p>
+            <div class="tags">
+              <span class="tag">Pandas</span>
+              <span class="tag">GCP</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Hadoop</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Experience</h2>
+            <p>Filled from public profile signals available through search. Add exact dates and bullet points from your resume or LinkedIn export for a final polished version.</p>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="pill">Current / Recent</span>
+              <span>Amazon</span>
+            </div>
+            <h3>Data Science & Analytics / AI-ML Focus</h3>
+            <p class="muted">
+              Your public profiles position you around data science, analytics, and AI/ML, with Amazon listed as your current organization.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-meta">
+              <span class="pill">Research</span>
+              <span>Indiana University Indianapolis</span>
+            </div>
+            <h3>Research Data Scientist</h3>
+            <p class="muted">
+              Public LinkedIn search snippets indicate research-oriented data science work associated with Indiana University Indianapolis.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Featured Projects</h2>
+            <p>Selected from your public GitHub repositories and Tableau Public work.</p>
+          </div>
+        </div>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>Isolated Sign Language Recognition</h3>
+                <p class="muted">Deep learning pipeline for ASL recognition using MediaPipe and sequence models.</p>
+              </div>
+              <span class="pill">Deep Learning</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">MediaPipe</span>
+              <span class="tag">TensorFlow</span>
+              <span class="tag">RNN</span>
+              <span class="tag">LSTM</span>
+              <span class="tag">GRU</span>
+            </div>
+            <p class="muted">Built and evaluated FCNN, RNN, LSTM, and GRU models on ASL sign data from 21 participants across 250 unique words. The GRU model achieved the strongest performance with 66% accuracy.</p>
+            <div class="project-links">
+              <a href="https://github.com/Mothigowtham/Isolated-Sign-Language-Recognition-Deep-Learning" target="_blank" rel="noreferrer">GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>Forecasting Consumer Credit Card Balances</h3>
+                <p class="muted">Time-series forecasting project for large-bank credit card balances.</p>
+              </div>
+              <span class="pill">Forecasting</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Time Series</span>
+              <span class="tag">Banking Analytics</span>
+              <span class="tag">Jupyter</span>
+            </div>
+            <p class="muted">Applied simple-to-advanced forecasting methods to quarterly consumer credit card balance trends to support strategic planning, risk assessment, and resource allocation.</p>
+            <div class="project-links">
+              <a href="https://github.com/Mothigowtham/Forecasting-Consumer-Cerdit-Card-Balances-on-Large-Banks" target="_blank" rel="noreferrer">GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>Market Basket Analysis in PySpark</h3>
+                <p class="muted">Recommendation-oriented analysis of 3M+ grocery orders from 200k+ users.</p>
+              </div>
+              <span class="pill">Recommendation Systems</span>
+            </div>
+            <div class="tags">
+              <span class="tag">PySpark</span>
+              <span class="tag">Analytics</span>
+              <span class="tag">Large-scale Data</span>
+            </div>
+            <p class="muted">Used transaction-scale customer purchase data to uncover patterns and generate insights useful for merchandising and recommendation design.</p>
+            <div class="project-links">
+              <a href="https://github.com/Mothigowtham/Market-Basket-Analysis-in-PySpark-Recommendation-Systems" target="_blank" rel="noreferrer">GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>Market Segmentation through Credit Card Analysis</h3>
+                <p class="muted">Customer segmentation project using credit card behavior and demographic features.</p>
+              </div>
+              <span class="pill">Unsupervised ML</span>
+            </div>
+            <div class="tags">
+              <span class="tag">R</span>
+              <span class="tag">Segmentation</span>
+              <span class="tag">Customer Analytics</span>
+            </div>
+            <p class="muted">Clustered customer profiles using payment patterns, card usage, and demographic signals to support more targeted business strategy.</p>
+            <div class="project-links">
+              <a href="https://github.com/Mothigowtham/Market-segmentation-through-credit-card-analysis-using-R" target="_blank" rel="noreferrer">GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>Data-to-Question Generation with Deep Learning</h3>
+                <p class="muted">Conference project focused on generating questions from data using deep learning.</p>
+              </div>
+              <span class="pill">NLP / Deep Learning</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">Deep Learning</span>
+              <span class="tag">Research</span>
+            </div>
+            <p class="muted">Research-oriented project published in an IBDAP conference context, showing interest in model-driven knowledge extraction and language generation.</p>
+            <div class="project-links">
+              <a href="https://github.com/Mothigowtham/Data-To-Question-Generation-Deep-Learning-IBDAP-International-conference" target="_blank" rel="noreferrer">GitHub ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-top">
+              <div>
+                <h3>Profit Margin Across Countries in Europe</h3>
+                <p class="muted">Interactive Tableau visualization exploring profit margin patterns across European countries.</p>
+              </div>
+              <span class="pill">Tableau</span>
+            </div>
+            <div class="tags">
+              <span class="tag">Tableau Public</span>
+              <span class="tag">Data Viz</span>
+              <span class="tag">Business Insights</span>
+            </div>
+            <p class="muted">A public dashboard showcasing visual analytics and business-facing storytelling through Tableau Public.</p>
+            <div class="project-links">
+              <a href="https://public.tableau.com/app/profile/mothigowtham/viz/ProfitMarginAcrossCountriesInEurope/ProfitMarginAcrossCountriesInEurope" target="_blank" rel="noreferrer">Tableau ↗</a>
+              <a href="https://public.tableau.com/app/profile/mothigowtham" target="_blank" rel="noreferrer">All Tableau Work ↗</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <h2>Contact</h2>
+            <p>Use these as your primary external portfolio touchpoints.</p>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <article class="contact-card">
+            <h3>GitHub</h3>
+            <p class="muted">Explore repositories, notebooks, and project documentation.</p>
+            <a class="btn btn-secondary" href="https://github.com/Mothigowtham" target="_blank" rel="noreferrer">Open GitHub</a>
+          </article>
+          <article class="contact-card">
+            <h3>LinkedIn</h3>
+            <p class="muted">Professional profile, network, and current experience overview.</p>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/mothigowtham" target="_blank" rel="noreferrer">Open LinkedIn</a>
+          </article>
+          <article class="contact-card">
+            <h3>Tableau Public</h3>
+            <p class="muted">Interactive dashboard portfolio and visualization work.</p>
+            <a class="btn btn-secondary" href="https://public.tableau.com/app/profile/mothigowtham" target="_blank" rel="noreferrer">Open Tableau</a>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Mothi Gowtham Ashok Kumar · Data Science & Analytics · Built for GitHub Pages
+    </div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`);
+        });
+      });
+    }, { threshold: 0.35 });
+
+    sections.forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
